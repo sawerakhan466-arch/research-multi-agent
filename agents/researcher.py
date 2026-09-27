@@ -3,10 +3,11 @@ from tools.web_search import web_search
 
 
 def researcher():
+
     return Agent(
         role="Researcher",
-        goal="Find useful and reliable information about the given topic.",
-        backstory="You are a web researcher who collects facts and sources.",
+        goal="Research the given topic and find useful information.",
+        backstory="You are a research assistant who searches for information.",
         tools=[web_search()],
         verbose=True
     )
