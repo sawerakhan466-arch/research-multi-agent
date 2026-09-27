@@ -21,7 +21,7 @@ def run_research(topic):
 
     research_task = Task(
         description=f"""
-        Research the following topic:
+        Research this topic:
 
         {topic}
 
@@ -55,15 +55,10 @@ def run_research(topic):
         # Research Report
 
         ## Introduction
-
         ## Key Findings
-
         ## Analysis
-
         ## Research Gaps
-
         ## Limitations
-
         ## Conclusion
         """,
         expected_output="A complete research report.",
