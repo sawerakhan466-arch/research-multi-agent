@@ -1,3 +1,2 @@
 streamlit
-crewai==1.15.22
-litellm==1.75.5
+crewai[litellm]==1.15.22
