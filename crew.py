@@ -1,17 +1,6 @@
-import os
 import streamlit as st
 
 from crewai import Crew, Task, Process, LLM
-
-# Get Groq API key
-groq_key = st.secrets["GROQ_API_KEY"]
-
-# Create Groq LLM
-groq_llm = LLM(
-    model="groq/openai/gpt-oss-120b",
-    api_key=groq_key,
-    temperature=0.2
-)
 
 from agents.researcher import researcher
 from agents.analyst import analyst
@@ -19,6 +8,12 @@ from agents.writer import writer
 
 
 def run_research(topic):
+
+    groq_llm = LLM(
+        model="groq/openai/gpt-oss-120b",
+        api_key=st.secrets["GROQ_API_KEY"],
+        temperature=0.2
+    )
 
     research_agent = researcher(groq_llm)
     analyst_agent = analyst(groq_llm)
@@ -41,8 +36,8 @@ def run_research(topic):
         description="""
         Analyze the research provided by the researcher.
 
-        Identify the important findings,
-        patterns, comparisons and gaps.
+        Identify important findings,
+        patterns, comparisons and research gaps.
         """,
         expected_output="A clear analysis of the research.",
         agent=analyst_agent,
